@@ -1,46 +1,82 @@
-# Sequência de Fibonacci
+# Registro de Notas dos Alunos
 
-Faça um programa que receba um número inteiro `n` e imprima os `n` primeiros termos da **sequência de Fibonacci**.
+Imagine que você é o professor de uma turma e precisa organizar as notas dos alunos. 
 
-A sequência de Fibonacci começa com 0 e 1, e cada termo seguinte é a soma dos dois termos anteriores.
-`
-(0, 1, 1, 2, 3, 5...)
-`
+Você quer descobrir quem está se destacando e qual é a maior média da turma. Para isso, você deve criar um programa em Python que ajuda a controlar as notas de forma simples.
 
-## Entrada
+O programa lê o nome e três notas de cada aluno e armazena em uma  matriz, permitindo:
 
-A entrada consiste em apenas uma linha contendo um número inteiro `n` (1 ≤ n ≤ 30).
+- mostrar todas as notas registradas,
+- calcular a média de cada aluno,
+- identificar o aluno com a maior média.
+
+
+## Regras de entrada
+
+- Cada linha contém:  
+
+```
+NOME NOTA1 NOTA2 NOTA3
+```
+
+- `NOME` é uma string (sem espaços).  
+- `NOTA1`, `NOTA2` e `NOTA3` são números reais.  
+- Para encerrar a entrada, digite:  
+
+```
+-1
+```
 
 ## Saída
 
-O programa deve imprimir os `n` primeiros termos da sequência de Fibonacci, um por linha.
+O programa mostra:
 
-## Exemplos
+- A matriz de dados (nome + notas de cada aluno)  
+- O aluno com a maior média e o valor dessa média, com duas casas decimais
 
-### Exemplo 1
+Formato do resultado:
 
-**Entrada**
 ```
-1
-```
+Matriz de notas:
+[[NOME NOTA1 NOTA2 NOTA3]
+ [NOME NOTA1 NOTA2 NOTA3]
+ ... ]
 
-**Saída**
-```
-0
-```
-
-### Exemplo 2
-
-**Entrada**
-```
-5
+Maior média: VALOR (NOME)
 ```
 
-**Saída**
+---
+
+## Exemplo
+
+### Entrada
+
 ```
-0
-1
-1
-2
-3
+Clara 8 7 9
+Ana 6 10 8
+José 10 9 8
+-1
 ```
+
+### Saída
+
+```
+Matriz de dados:
+[['Clara' '8.0' '7.0' '9.0']
+ ['Ana' '6.0' '10.0' '8.0']
+ ['José' '10.0' '9.0' '8.0']]
+
+Maior média: 9.00 (José)
+```
+
+
+## Dicas de Implementação
+
+- Crie uma matriz completa que será utilizada para imprimir na tela;
+- Crie uma outra matriz contendo apenas as notas. Utilize para isso:
+```
+matriz_notas = matriz_original[:, 1:].astype(float)
+```
+Obs: O `astype(float)` converte os valores da matriz para o tipo `float`;
+- Crie um vetor de médias com `np.mean`;
+- Obtenha o índice do maior elemento do vetor com `np.argmax`.
